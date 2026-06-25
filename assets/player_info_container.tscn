@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://5vho7xmjlcfg"]
+
+[ext_resource type="Theme" uid="uid://dcxn0vfwxasma" path="res://assets/themes/light/parent_theme.tres" id="1_aur8r"]
+[ext_resource type="Script" path="res://assets/player_info_container.gd" id="1_p63u8"]
+
+[node name="player_info_container" type="HBoxContainer"]
+theme = ExtResource("1_aur8r")
+script = ExtResource("1_p63u8")
+
+[node name="panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2
+text = "Player"

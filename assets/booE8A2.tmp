@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://biqktn645ktl0"]
+
+[ext_resource type="Texture2D" uid="uid://vxxj0kbu68ua" path="res://assets/boot splash/Новая пвалитра с исправлениями.png" id="1_1t81b"]
+[ext_resource type="Script" path="res://assets/boot_scene.gd" id="1_vmypg"]
+
+[sub_resource type="Animation" id="Animation_qlxsy"]
+resource_name = "alpha"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q030b"]
+_data = {
+"alpha": SubResource("Animation_qlxsy")
+}
+
+[node name="boot_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("1_vmypg")
+
+[node name="label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.0
+offset_right = 172.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Я не придумал название студии, простите"
+
+[node name="logo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -256.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_1t81b")
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q030b")
+}
+
+[connection signal="animation_finished" from="animation_player" to="." method="_on_animation_finished"]

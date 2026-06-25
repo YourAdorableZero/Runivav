@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjftdkh6x2xm5"]
+
+[ext_resource type="Script" path="res://assets/multiplayer.gd" id="1_jmt84"]
+
+[node name="multiplayer" type="Node"]
+script = ExtResource("1_jmt84")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 72.0
+offset_bottom = 72.0
+
+[node name="menu" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="name" type="Label" parent="UI/menu"]
+layout_mode = 2
+text = "game name"
+
+[node name="version" type="Label" parent="UI/menu"]
+layout_mode = 2
+text = "x.x.x"
+
+[node name="multiplayer" type="HBoxContainer" parent="UI/menu"]
+layout_mode = 2
+
+[node name="host" type="Button" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "Host"
+
+[node name="connect" type="Button" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "Connect
+"
+
+[node name="port_line" type="LineEdit" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "135"
+
+[node name="ip_line" type="LineEdit" parent="UI/menu/multiplayer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="lobby" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="label" type="Label" parent="UI/lobby"]
+layout_mode = 2
+text = "Lobby"
+
+[node name="debug_label" type="Label" parent="UI/lobby"]
+layout_mode = 2
+text = "debug"
+
+[connection signal="pressed" from="UI/menu/multiplayer/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/menu/multiplayer/connect" to="." method="_on_connect_pressed"]

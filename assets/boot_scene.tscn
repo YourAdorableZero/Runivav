@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://biqktn645ktl0"]
+
+[ext_resource type="Texture2D" uid="uid://bkyo4uh4aaos4" path="res://assets/boot splash/new_pal+.png" id="1_1t81b"]
+[ext_resource type="Theme" uid="uid://dcxn0vfwxasma" path="res://assets/themes/light/parent_theme.tres" id="1_2t4rq"]
+[ext_resource type="Script" uid="uid://ceoyym88r20gt" path="res://assets/boot_scene.gd" id="1_vmypg"]
+
+[sub_resource type="Animation" id="Animation_qlxsy"]
+resource_name = "alpha"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo/texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_load_menu"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("logo/developer_name:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q030b"]
+_data = {
+&"alpha": SubResource("Animation_qlxsy")
+}
+
+[node name="boot_scene" type="Control" unique_id=1665391809]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_2t4rq")
+script = ExtResource("1_vmypg")
+
+[node name="animation_player" type="AnimationPlayer" parent="." unique_id=296009611]
+libraries/ = SubResource("AnimationLibrary_q030b")
+
+[node name="logo" type="VBoxContainer" parent="." unique_id=2042350809]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -334.5
+offset_top = -536.0
+offset_right = 334.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="developer_name" type="Label" parent="logo" unique_id=793018815]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.505882, 0.384314, 0.443137, 1)
+theme_override_font_sizes/font_size = 25
+text = "Silly developers present"
+
+[node name="texture" type="TextureRect" parent="logo" unique_id=1869239631]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+texture = ExtResource("1_1t81b")
+stretch_mode = 5

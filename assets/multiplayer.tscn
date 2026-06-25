@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://bjftdkh6x2xm5"]
+
+[ext_resource type="Script" uid="uid://c5v15egcj85r1" path="res://assets/multiplayer.gd" id="1_jmt84"]
+[ext_resource type="Theme" uid="uid://dcxn0vfwxasma" path="res://assets/themes/light/parent_theme.tres" id="2_2ne5r"]
+
+[node name="multiplayer" type="Node" unique_id=1406851786]
+script = ExtResource("1_jmt84")
+
+[node name="UI" type="Control" parent="." unique_id=85234304]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2ne5r")
+
+[node name="game_name" type="Label" parent="UI" unique_id=1486104206]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 20.0
+text = "game name"
+
+[node name="game_version" type="Label" parent="UI" unique_id=1135933243]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -40.0
+offset_right = 95.0
+offset_bottom = -20.0
+grow_vertical = 0
+text = "x.x.x"
+
+[node name="theme" type="HBoxContainer" parent="UI" unique_id=449793734]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="label" type="Label" parent="UI/theme" unique_id=1032678780]
+layout_mode = 2
+text = "тема:"
+
+[node name="panel_1" type="Panel" parent="UI/theme" unique_id=2136250967]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="panel_2" type="Panel" parent="UI/theme" unique_id=1983648745]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="menu" type="VBoxContainer" parent="UI" unique_id=2044776596]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -118.5
+offset_right = 654.0
+offset_bottom = 118.5
+grow_vertical = 2
+
+[node name="player_info" type="HBoxContainer" parent="UI/menu" unique_id=1589782029]
+layout_mode = 2
+
+[node name="label" type="Label" parent="UI/menu/player_info" unique_id=1823155679]
+layout_mode = 2
+text = "Nickname:"
+
+[node name="name" type="LineEdit" parent="UI/menu/player_info" unique_id=1678558000]
+custom_minimum_size = Vector2(128, 30)
+layout_mode = 2
+text = "Name"
+max_length = 6
+
+[node name="separator_1" type="HSeparator" parent="UI/menu" unique_id=100160416]
+layout_mode = 2
+
+[node name="host" type="Button" parent="UI/menu" unique_id=1459279126]
+custom_minimum_size = Vector2(332, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Host"
+
+[node name="space" type="Container" parent="UI/menu" unique_id=982841318]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="connect" type="Button" parent="UI/menu" unique_id=629540964]
+custom_minimum_size = Vector2(332, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Connect"
+
+[node name="server_info" type="HBoxContainer" parent="UI/menu" unique_id=2063933946]
+layout_mode = 2
+
+[node name="ip_line" type="LineEdit" parent="UI/menu/server_info" unique_id=1770985771]
+custom_minimum_size = Vector2(234, 0)
+layout_mode = 2
+
+[node name="_" type="Label" parent="UI/menu/server_info" unique_id=1374686665]
+layout_mode = 2
+text = ":"
+
+[node name="port_line" type="LineEdit" parent="UI/menu/server_info" unique_id=246609499]
+layout_mode = 2
+text = "135"
+
+[node name="separator_2" type="HSeparator" parent="UI/menu" unique_id=2024057172]
+layout_mode = 2
+
+[node name="problems" type="VBoxContainer" parent="UI/menu" unique_id=126577521]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TODO" type="Label" parent="UI/menu" unique_id=2138781790]
+layout_mode = 2
+text = "TODO (по приоритетам):
+- Помяукать
+- Перепроверить логику
+- Посмотреть библиотеку
+- Проверка совместимости версий"
+
+[node name="connecting_screen" type="VBoxContainer" parent="UI" unique_id=229479982]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_right = 192.0
+offset_bottom = 22.0
+grow_vertical = 2
+
+[node name="label" type="Label" parent="UI/connecting_screen" unique_id=1525934697]
+layout_mode = 2
+text = "Connecting..."
+
+[node name="cancel" type="Button" parent="UI/connecting_screen" unique_id=1830487115]
+layout_mode = 2
+text = "Cancel"
+
+[node name="label_lobby" type="Label" parent="UI" unique_id=736604328]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 20.0
+text = "Lobby"
+
+[node name="lobby" type="VBoxContainer" parent="UI" unique_id=10666065]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -76.0
+offset_right = 171.0
+offset_bottom = 76.0
+grow_vertical = 2
+
+[node name="label_2" type="Label" parent="UI/lobby" unique_id=1078224240]
+layout_mode = 2
+text = "Players"
+
+[node name="separator_1" type="HSeparator" parent="UI/lobby" unique_id=329674967]
+layout_mode = 2
+
+[node name="scroll_container" type="ScrollContainer" parent="UI/lobby" unique_id=1000012647]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="players" type="VBoxContainer" parent="UI/lobby/scroll_container" unique_id=1177050256]
+layout_mode = 2
+
+[node name="separator_2" type="HSeparator" parent="UI/lobby" unique_id=937516350]
+layout_mode = 2
+
+[node name="disconnect" type="Button" parent="UI/lobby" unique_id=998521056]
+layout_mode = 2
+text = "Disconnect"
+
+[connection signal="text_changed" from="UI/menu/player_info/name" to="." method="_on_name_changed"]
+[connection signal="pressed" from="UI/menu/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/menu/connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="UI/connecting_screen/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="UI/lobby/disconnect" to="." method="_on_disconnect_pressed"]

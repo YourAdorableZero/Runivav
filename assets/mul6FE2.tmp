@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjftdkh6x2xm5"]
+
+[ext_resource type="Script" path="res://assets/multiplayer.gd" id="1_jmt84"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_w76p7"]
+properties/0/path = NodePath("UI/lobby/debug_label:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="multiplayer" type="Node"]
+script = ExtResource("1_jmt84")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 72.0
+offset_bottom = 72.0
+
+[node name="menu" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="name" type="Label" parent="UI/menu"]
+layout_mode = 2
+text = "game name"
+
+[node name="version" type="Label" parent="UI/menu"]
+layout_mode = 2
+text = "x.x.x"
+
+[node name="separator_1" type="HSeparator" parent="UI/menu"]
+layout_mode = 2
+
+[node name="player_info" type="HBoxContainer" parent="UI/menu"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="UI/menu/player_info"]
+layout_mode = 2
+text = "Никнейм: "
+
+[node name="name" type="LineEdit" parent="UI/menu/player_info"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Player"
+
+[node name="separator_2" type="HSeparator" parent="UI/menu"]
+layout_mode = 2
+
+[node name="multiplayer" type="HBoxContainer" parent="UI/menu"]
+layout_mode = 2
+
+[node name="host" type="Button" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "Host"
+
+[node name="connect" type="Button" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "Connect
+"
+
+[node name="port_line" type="LineEdit" parent="UI/menu/multiplayer"]
+layout_mode = 2
+text = "135"
+
+[node name="ip_line" type="LineEdit" parent="UI/menu/multiplayer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="separator_3" type="HSeparator" parent="UI/menu"]
+layout_mode = 2
+
+[node name="problems" type="VBoxContainer" parent="UI/menu"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="UI/menu/problems"]
+layout_mode = 2
+text = "Известные проблемы:"
+
+[node name="problem_1" type="Label" parent="UI/menu/problems"]
+layout_mode = 2
+text = "- При создании сервера по адресу, где сервер уже существует, Годот посылает тебя нахуй :)"
+
+[node name="problem_2" type="Label" parent="UI/menu/problems"]
+layout_mode = 2
+text = "- Артём шизик"
+
+[node name="connecting_screen" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="label" type="Label" parent="UI/connecting_screen"]
+layout_mode = 2
+text = "Connecting..."
+
+[node name="cancel" type="Button" parent="UI/connecting_screen"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="lobby" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="label" type="Label" parent="UI/lobby"]
+layout_mode = 2
+text = "Lobby"
+
+[node name="debug_label" type="Label" parent="UI/lobby"]
+layout_mode = 2
+text = "[id, id, id]"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UI/lobby/debug_label"]
+root_path = NodePath("../../../..")
+replication_config = SubResource("SceneReplicationConfig_w76p7")
+
+[node name="disconnect" type="Button" parent="UI/lobby"]
+layout_mode = 2
+text = "Disconnect"
+
+[connection signal="pressed" from="UI/menu/multiplayer/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/menu/multiplayer/connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="UI/connecting_screen/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="UI/lobby/disconnect" to="." method="_on_disconnect_pressed"]
